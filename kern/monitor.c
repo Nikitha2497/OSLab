@@ -52,13 +52,35 @@ mon_kerninfo(int argc, char **argv, struct Trapframe *tf)
 	cprintf("  end    %08x (virt)  %08x (phys)\n", end, end - KERNBASE);
 	cprintf("Kernel executable memory footprint: %dKB\n",
 		ROUNDUP(end - entry, 1024) / 1024);
+	cprintf("x=%d y=%d", 3);
 	return 0;
 }
 
-int
-mon_backtrace(int argc, char **argv, struct Trapframe *tf)
+int mon_backtrace(int argc, char **argv, struct Trapframe *tf)
 {
 	// Your code here.
+	cprintf("Stack backtrace:\n");
+	uint32_t *ebp;
+	ebp = (uint32_t *)read_ebp();
+	while (ebp != (uint32_t *)0x0)
+	{
+		cprintf("ebp %08x eip %08x args ",ebp,*(ebp+1));
+		int i = 0;
+		uint32_t *arg = ebp + 2;
+		for (i = 0; i < 5; ++i)
+		{
+			cprintf("%08x ",*arg);
+			arg ++;
+		}
+		cprintf("\n");
+		struct Eipdebuginfo info;
+		if (debuginfo_eip(*(ebp+1),&info) == 0)
+		{
+			cprintf("%s:%d: %.*s+%d\n",info.eip_file,info.eip_line,info.eip_fn_namelen,info.eip_fn_name,*(ebp+1));
+		}
+		cprintf("\n");
+		ebp = (uint32_t *)*ebp;
+	}
 	return 0;
 }
 
