@@ -1,0 +1,131 @@
+
+obj/kern/kernel:     file format elf32-i386
+obj/kern/kernel
+architecture: i386, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x0010000c
+
+Program Header:
+    LOAD off    0x00001000 vaddr 0xf0100000 paddr 0x00100000 align 2**12
+         filesz 0x0000712f memsz 0x0000712f flags r-x
+    LOAD off    0x00009000 vaddr 0xf0108000 paddr 0x00108000 align 2**12
+         filesz 0x0000a300 memsz 0x0000a944 flags rw-
+   STACK off    0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**4
+         filesz 0x00000000 memsz 0x00000000 flags rwx
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00001861  f0100000  00100000  00001000  2**4
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .rodata       00000730  f0101880  00101880  00002880  2**5
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  2 .stab         000038b9  f0101fb0  00101fb0  00002fb0  2**2
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  3 .stabstr      000018c6  f0105869  00105869  00006869  2**0
+                  CONTENTS, ALLOC, LOAD, READONLY, DATA
+  4 .data         0000a300  f0108000  00108000  00009000  2**12
+                  CONTENTS, ALLOC, LOAD, DATA
+  5 .bss          00000644  f0112300  00112300  00013300  2**5
+                  ALLOC
+  6 .comment      00000034  00000000  00000000  00013300  2**0
+                  CONTENTS, READONLY
+SYMBOL TABLE:
+f0100000 l    d  .text	00000000 .text
+f0101880 l    d  .rodata	00000000 .rodata
+f0101fb0 l    d  .stab	00000000 .stab
+f0105869 l    d  .stabstr	00000000 .stabstr
+f0108000 l    d  .data	00000000 .data
+f0112300 l    d  .bss	00000000 .bss
+00000000 l    d  .comment	00000000 .comment
+00000000 l    df *ABS*	00000000 obj/kern/entry.o
+f010002f l       .text	00000000 relocated
+f010003e l       .text	00000000 spin
+00000000 l    df *ABS*	00000000 entrypgdir.c
+00000000 l    df *ABS*	00000000 init.c
+00000000 l    df *ABS*	00000000 console.c
+f0100177 l     F .text	0000001f serial_proc_data
+f0100196 l     F .text	00000043 cons_intr
+f0112320 l     O .bss	00000208 cons
+f01001d9 l     F .text	0000010b kbd_proc_data
+f0112300 l     O .bss	00000004 shift.1487
+f0101a60 l     O .rodata	00000100 shiftcode
+f0101960 l     O .rodata	00000100 togglecode
+f0101940 l     O .rodata	00000010 charcode
+f01002e4 l     F .text	000001e9 cons_putc
+f0112528 l     O .bss	00000002 crt_pos
+f011252c l     O .bss	00000004 crt_buf
+f0112530 l     O .bss	00000004 addr_6845
+f0112534 l     O .bss	00000001 serial_exists
+f0112200 l     O .data	00000100 normalmap
+f0112100 l     O .data	00000100 shiftmap
+f0112000 l     O .data	00000100 ctlmap
+00000000 l    df *ABS*	00000000 monitor.c
+f0101d44 l     O .rodata	00000018 commands
+00000000 l    df *ABS*	00000000 printf.c
+f01008b1 l     F .text	00000013 putch
+00000000 l    df *ABS*	00000000 kdebug.c
+f01008fe l     F .text	000000f6 stab_binsearch
+00000000 l    df *ABS*	00000000 printfmt.c
+f0100bc5 l     F .text	000000af printnum
+f0100c74 l     F .text	0000001d sprintputch
+f0101f80 l     O .rodata	00000020 error_string
+00000000 l    df *ABS*	00000000 readline.c
+f0112540 l     O .bss	00000400 buf
+00000000 l    df *ABS*	00000000 string.c
+f010000c g       .text	00000000 entry
+f010128e g     F .text	00000020 strcpy
+f01004e9 g     F .text	00000012 kbd_intr
+f0100760 g     F .text	0000000a mon_backtrace
+f01000e6 g     F .text	00000057 _panic
+f0100094 g     F .text	00000052 i386_init
+f0101420 g     F .text	00000068 memmove
+f0101162 g     F .text	0000001a snprintf
+f0100cae g     F .text	00000466 vprintfmt
+f01004fb g     F .text	0000004a cons_getc
+f01008ea g     F .text	00000014 cprintf
+f0101488 g     F .text	00000013 memcpy
+f010117c g     F .text	000000d9 readline
+f0111000 g     O .data	00001000 entry_pgtable
+f0100040 g     F .text	00000054 test_backtrace
+f0101114 g     F .text	0000004e vsnprintf
+f0112300 g       .data	00000000 edata
+f0100545 g     F .text	00000108 cons_init
+f0105868 g       .stab	00000000 __STAB_END__
+f0105869 g       .stabstr	00000000 __STABSTR_BEGIN__
+f0101710 g     F .text	00000151 .hidden __umoddi3
+f01004cd g     F .text	0000001c serial_intr
+f01015e0 g     F .text	00000122 .hidden __udivdi3
+f010066e g     F .text	0000000a iscons
+f01014f7 g     F .text	000000de strtol
+f010126d g     F .text	00000021 strnlen
+f01012ae g     F .text	00000022 strcat
+f0112940 g     O .bss	00000004 panicstr
+f0112944 g       .bss	00000000 end
+f010013d g     F .text	0000003a _warn
+f01013b7 g     F .text	0000001c strfind
+f0101861 g       .text	00000000 etext
+0010000c g       .text	00000000 _start
+f01012fd g     F .text	0000003b strlcpy
+f010135e g     F .text	00000038 strncmp
+f01012d0 g     F .text	0000002d strncpy
+f010149b g     F .text	00000039 memcmp
+f010064d g     F .text	00000010 cputchar
+f01013d3 g     F .text	0000004d memset
+f010065d g     F .text	00000011 getchar
+f0100c91 g     F .text	0000001d printfmt
+f010712e g       .stabstr	00000000 __STABSTR_END__
+f0101338 g     F .text	00000026 strcmp
+f01009f4 g     F .text	000001d1 debuginfo_eip
+f01008c4 g     F .text	00000026 vcprintf
+f0110000 g       .data	00000000 bootstacktop
+f0110000 g     O .data	00001000 entry_pgdir
+f0108000 g       .data	00000000 bootstack
+f0101fb0 g       .stab	00000000 __STAB_BEGIN__
+f0101255 g     F .text	00000018 strlen
+f0101396 g     F .text	00000021 strchr
+f01006b0 g     F .text	000000b0 mon_kerninfo
+f010076a g     F .text	00000147 monitor
+f01014d4 g     F .text	00000023 memfind
+f0100678 g     F .text	00000038 mon_help
+
+
