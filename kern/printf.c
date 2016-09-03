@@ -25,6 +25,7 @@ vcprintf(const char *fmt, va_list ap)
 int
 cprintf(const char *fmt, ...)
 {
+	
 	va_list ap;
 	int cnt;
 
